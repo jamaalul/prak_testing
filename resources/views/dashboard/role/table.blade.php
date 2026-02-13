@@ -5,6 +5,8 @@
 @section('content')
     <div>
 
-        <x-data-table :table-data="App\Models\Role::all()->toArray()" />
+        <x-data-table :table-data="App\Models\Role::all()->toArray()"
+        model="Role" 
+        id-field="idrole" />
     </div>
 @endsection

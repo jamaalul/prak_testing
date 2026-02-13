@@ -15,6 +15,8 @@
                     'no_wa' => $item->no_wa,
                 ];
             })
-            ->toArray()" />
+            ->toArray()"
+            model="Pemilik" 
+            id-field="idpemilik" />
     </div>
 @endsection

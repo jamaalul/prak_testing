@@ -37,7 +37,12 @@
                                     <button class="p-1 text-cyan-600 hover:text-cyan-900">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button class="p-1 text-red-600 hover:text-red-900">
+                                    <button class="p-1 text-red-600 hover:text-red-900" 
+                                            @if($model && isset($row[$idField])) 
+                                                onclick="openDeleteModal('{{ $model }}', '{{ $row[$idField] }}')"
+                                            @else
+                                                onclick="alert('ID atau Model tidak disetel untuk penghapusan')"
+                                            @endif>
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>

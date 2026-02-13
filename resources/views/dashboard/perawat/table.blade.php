@@ -17,6 +17,8 @@
                     'pendidikan' => $item->pendidikan,
                 ];
             })
-            ->toArray()" />
+            ->toArray()"
+            model="Perawat" 
+            id-field="id_perawat" />
     </div>
 @endsection

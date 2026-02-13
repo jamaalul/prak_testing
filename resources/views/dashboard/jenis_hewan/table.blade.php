@@ -4,6 +4,8 @@
 
 @section('content')
     <div>
-        <x-data-table :table-data="App\Models\JenisHewan::all()->toArray()" />
+        <x-data-table :table-data="App\Models\JenisHewan::all()->toArray()"
+        model="JenisHewan" 
+        id-field="idjenis_hewan" />
     </div>
 @endsection

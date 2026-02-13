@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Temu Dokter - RSHP UNAIR')
+@section('title', 'Pet - RSHP UNAIR')
 
 @section('content')
     <div>
@@ -18,6 +18,8 @@
                     'wa_pemilik' => $item->pemilik->no_wa,
                 ];
             })
-            ->toArray()" />
+            ->toArray()"
+            model="Pet" 
+            id-field="idpet" />
     </div>
 @endsection

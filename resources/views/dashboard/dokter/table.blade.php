@@ -17,6 +17,6 @@
                     'jenis_kelamin' => $item->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan',
                 ];
             })
-            ->toArray()" />
+            ->toArray()" model="Dokter" id-field="id_dokter"/>
     </div>
 @endsection

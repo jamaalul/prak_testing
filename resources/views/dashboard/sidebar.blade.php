@@ -3,7 +3,7 @@
         <span class="font-bold text-cyan-700 text-xl">RSHP Admin</span>
     </div>
 
-    <nav class="flex-1 space-y-2 p-4">
+    <nav class="flex-1 space-y-2 p-4 text-sm">
         <a href="/dashboard"
             class="flex items-center space-x-3 p-2 rounded-lg {{ request()->is('dashboard*') ? 'bg-cyan-50 text-cyan-700' : 'text-gray-600 hover:bg-gray-50' }}">
             <i class="w-5 fas fa-home"></i>

@@ -83,3 +83,5 @@ Route::prefix('dokter')->group(function () {
         return view('dashboard.dokter.table');
     });
 })->middleware('auth');
+
+Route::delete('/api/delete/{model}/{id}', [App\Http\Controllers\ActionController::class, 'destroy'])->name('api.delete');

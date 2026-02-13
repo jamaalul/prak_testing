@@ -5,17 +5,21 @@
 @section('content')
     <div>
 
-        <x-data-table :table-data="App\Models\TemuDokter::select('no_urut', 'waktu_daftar', 'status', 'idpet', 'idrole_user')
-            ->with('pet:idpet,nama')
-            ->get()
-            ->map(function ($item) {
-                return [
-                    'no_urut' => $item->no_urut,
-                    'waktu_daftar' => $item->waktu_daftar,
-                    'status' => $item->status,
-                    'pet' => $item->pet->nama,
-                ];
-            })
-            ->toArray()" />
+        <x-data-table 
+            :table-data="App\Models\TemuDokter::select('idreservasi_dokter', 'no_urut', 'waktu_daftar', 'status', 'idpet', 'idrole_user')
+                ->with('pet:idpet,nama')
+                ->get()
+                ->map(function ($item) {
+                    return [
+                        'id' => $item->idreservasi_dokter,
+                        'no_urut' => $item->no_urut,
+                        'waktu_daftar' => $item->waktu_daftar,
+                        'status' => $item->status == 1 ? 'Selesai' : 'Mendatang',
+                        'pet' => $item->pet->nama,
+                    ];
+                })
+                ->toArray()"
+                model="TemuDokter" 
+                id-field="idreservasi_dokter" />
     </div>
 @endsection
