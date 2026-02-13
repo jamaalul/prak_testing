@@ -1,0 +1,10 @@
+@extends('layouts.dashboard')
+
+@section('title', 'User - RSHP UNAIR')
+
+@section('content')
+    <div>
+
+        <x-data-table :table-data="App\Models\User::all()->toArray()" />
+    </div>
+@endsection

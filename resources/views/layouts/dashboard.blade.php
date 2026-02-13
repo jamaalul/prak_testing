@@ -27,13 +27,13 @@
 <body class="flex bg-gray-50 w-screen min-h-screen">
     @include('dashboard.sidebar')
 
-    <div class="flex flex-col flex-1 min-h-screen">
-        <header class="flex flex-col justify-center items-end bg-white px-8 border-b h-16">
+    <div class="flex flex-col flex-1 h-screen">
+        <header class="flex flex-col justify-center items-end bg-white p-8 border-b h-16">
             <h3 class="font-semibold">{{ Auth::user()->nama }}</h3>
             <p class="text-gray-600 text-sm">{{ Auth::user()->role->pluck('nama_role')->implode(', ') }}</p>
         </header>
 
-        <main class="p-8">
+        <main class="p-8 overflow-auto">
             @yield('content')
         </main>
     </div>

@@ -26,9 +26,19 @@ class RekamMedis extends Model
         'idreservasi_dokter',
     ];
 
+    public function dokter()
+    {
+        return $this->belongsTo(User::class, 'dokter_pemeriksa', 'iduser');
+    }
+
     public function pet()
     {
         return $this->belongsTo(Pet::class, 'idpet', 'idpet');
+    }
+
+    public function reservasi()
+    {
+        return $this->belongsTo(TemuDokter::class, 'idreservasi_dokter', 'idreservasi_dokter');
     }
 
     public function detailRekamMedis()
