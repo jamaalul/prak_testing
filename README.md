@@ -1,59 +1,180 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# RSHP-Unair Dashboard
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=flat-square&logo=laravel)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=flat-square&logo=php)](https://php.net)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-## About Laravel
+> Repository untuk tugas mata kuliah Pengujian Perangkat Lunak
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Daftar Isi
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [Persyaratan Sistem](#-persyaratan-sistem)
+- [Instalasi](#-instalasi)
+- [Arsitektur Sistem](#%EF%B8%8F-arsitektur-sistem)
+- [Sistem Otorisasi](#-sistem-otorisasi)
+- [Struktur Project](#-struktur-project)
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Persyaratan Sistem
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Wajib
 
-## Laravel Sponsors
+| Komponen | Versi | Keterangan |
+|----------|-------|------------|
+| PHP | >= 8.2 | Bahasa pemrograman |
+| Composer | Latest | Dependency Manager untuk PHP |
+| Laravel | 12.x | PHP Framework |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Rekomendasi
 
-### Premium Partners
+| Komponen | Versi | Keterangan |
+|----------|-------|------------|
+| Laragon | Latest | Local development environment (Windows) |
+| MySQL | >= 5.7 | Database |
+| MariaDB | >= 10.3 | Alternatif database |
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## Instalasi
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 1. Clone Repository
 
-## Code of Conduct
+```bash
+git clone https://github.com/jamaalul/prak_testing.git
+cd prak_testing
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 2. Install Dependencies
 
-## Security Vulnerabilities
+```bash
+composer install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 3. Konfigurasi Environment
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+### 4. Setup Database
+
+1. Buat database baru di Laragon/phpMyAdmin
+2. Import file `database_rshp.dump` ke database
+3. Konfigurasi koneksi database di file `.env`:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nama_database_anda
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 5. Jalankan Aplikasi
+
+```bash
+php artisan serve
+```
+
+Aplikasi akan berjalan di `http://localhost:8000`
+
+---
+
+## Arsitektur Sistem
+
+### Komponen Blade Reusable
+
+Sistem ini menggunakan komponen Blade yang dapat digunakan ulang untuk konsistensi dan efisiensi.
+
+#### Data Table Component
+
+```blade
+<x-data-table :data="$users" />
+```
+
+Komponen ini digunakan di setiap menu untuk menampilkan data dalam format tabel yang konsisten.
+
+#### Confirmation Modal Component
+
+```blade
+<x-confirm-modal 
+    title="Hapus Data"
+    message="Apakah Anda yakin ingin menghapus data ini?"
+    :action="route('data.destroy', $id)"
+/>
+```
+
+Digunakan untuk konfirmasi penghapusan data dengan UX yang lebih baik.
+
+---
+
+## Sistem Otorisasi
+
+### Role-Based Access Control (RBAC)
+
+Sistem menggunakan middleware [`RoleMiddleware`](app/Http/Middleware/RoleMiddleware.php) untuk mengatur akses berdasarkan role:
+
+```
++-------------------------------------------------------------+
+|                    DASHBOARD UTAMA                          |
++-------------------------------------------------------------+
+|  +---------+  +---------+  +---------+  +---------+        |
+|  |  Admin  |  | Dokter  |  | Perawat |  |  User   |        |
+|  +----+----+  +----+----+  +----+----+  +----+----+        |
+|       |            |            |            |              |
+|       v            v            v            v              |
+|  Full Access   Limited       Limited      Basic            |
+|                Access        Access       Access           |
++-------------------------------------------------------------+
+```
+
+### Fitur Otorisasi
+
+- Satu dashboard yang sama untuk semua role
+- Menu ditampilkan secara dinamis berdasarkan role
+- Akses ke fitur dibatasi sesuai hak akses
+- Mapping role terpusat di middleware
+
+---
+
+## Struktur Project
+
+```
+praktikum_testing/
+|-- app/
+|   |-- Http/
+|   |   |-- Controllers/
+|   |   |   |-- AuthController.php
+|   |   |   |-- DokterController.php
+|   |   |   |-- PerawatController.php
+|   |   |   |-- PetController.php
+|   |   |   |-- RekamMedisController.php
+|   |   |   +-- ...
+|   |   +-- Middleware/
+|   |       +-- RoleMiddleware.php
+|   |-- Models/
+|   +-- View/
+|       +-- Components/
+|-- resources/
+|   +-- views/
+|       |-- components/
+|       |   |-- data-table.blade.php
+|       |   +-- confirm-modal.blade.php
+|       |-- dashboard/
+|       +-- layouts/
+|-- routes/
+|   |-- dashboard.php
+|   +-- auth.php
++-- database_rshp.dump
+```
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
