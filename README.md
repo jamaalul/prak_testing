@@ -83,6 +83,13 @@ php artisan serve
 
 Aplikasi akan berjalan di `http://localhost:8000`
 
+login menggunakan kredensial berikut:
+
+```bash
+email = admin@mail.com
+password = 1234567
+```
+
 ---
 
 ## Arsitektur Sistem
