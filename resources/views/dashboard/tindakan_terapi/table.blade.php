@@ -21,6 +21,7 @@
             })
             ->toArray()"
             model="KodeTindakanTerapi" 
-            id-field="idkode_tindakan_terapi"/>
+            id-field="idkode_tindakan_terapi"
+            edit-route="tindakan-terapi.edit" />
     </div>
 @endsection

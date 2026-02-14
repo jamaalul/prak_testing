@@ -20,10 +20,16 @@ class TemuDokter extends Model
     protected $fillable = [
         'status',
         'idpet',
+        'idrole_user',
     ];
 
     public function pet()
     {
         return $this->belongsTo(Pet::class, 'idpet', 'idpet');
+    }
+
+    public function roleUser()
+    {
+        return $this->belongsTo(RoleUser::class, 'idrole_user', 'idrole_user');
     }
 }

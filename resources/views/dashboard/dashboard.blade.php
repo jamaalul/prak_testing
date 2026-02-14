@@ -3,7 +3,7 @@
 @section('title', 'Dashboard - RSHP UNAIR')
 
 @section('content')
-    <h1 class="mt-6 text-2xl text-center">Selamat datang</h1>
+    <h1 class="my-6 text-2xl text-center">Selamat datang</h1>
     <div class="h-96 overflow-hidden tenor-gif-embed" data-postid="11279902563780569961" data-share-method="host"
         data-aspect-ratio="0.566265" data-width="100%"><a
             href="https://tenor.com/view/cat-meow-360-cat-meme-gif-11279902563780569961">Cat Meow 360

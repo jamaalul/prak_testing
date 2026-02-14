@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class RasHewan extends Model
 {
+    public $timestamps = false;
+
     protected $table = 'ras_hewan';
 
     protected $primaryKey = 'idras_hewan';

@@ -70,7 +70,7 @@
             <span>Perawat</span>
         </a>
         <a href="/dokter"
-            class="flex items-center space-x-3 p-2 rounded-lg {{ request()->is('doctor*') ? 'bg-cyan-50 text-cyan-700' : 'text-gray-600 hover:bg-gray-50' }}">
+            class="flex items-center space-x-3 p-2 rounded-lg {{ request()->is('dokter*') ? 'bg-cyan-50 text-cyan-700' : 'text-gray-600 hover:bg-gray-50' }}">
             <i class="w-5 fa-user-doctor fas"></i>
             <span>Dokter</span>
         </a>

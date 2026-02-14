@@ -20,6 +20,7 @@
             })
             ->toArray()"
             model="Pet" 
-            id-field="idpet" />
+            id-field="id_pet"
+            edit-route="pet.edit" />
     </div>
 @endsection

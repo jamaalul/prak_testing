@@ -19,6 +19,7 @@
             })
             ->toArray()"
             model="Perawat" 
-            id-field="id_perawat" />
+            id-field="id_perawat"
+            edit-route="perawat.edit" />
     </div>
 @endsection

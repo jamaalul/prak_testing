@@ -9,13 +9,15 @@ class DataTable extends Component
     public $tableData;
     public $model;
     public $idField;
+    public $editRoute;
 
-    public function __construct($tableData = [], $model = null, $idField = 'id')
+    public function __construct($tableData = [], $model = null, $idField = 'id', $editRoute = null)
     {
         \Log::info('DataTable component constructor called.', ['count' => count($tableData)]);
         $this->tableData = $tableData;
         $this->model = $model;
         $this->idField = $idField;
+        $this->editRoute = $editRoute;
     }
 
     public function render()

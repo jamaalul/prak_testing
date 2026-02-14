@@ -6,6 +6,7 @@
     <div>
         <x-data-table :table-data="App\Models\JenisHewan::all()->toArray()"
         model="JenisHewan" 
-        id-field="idjenis_hewan" />
+        id-field="idjenis_hewan"
+        edit-route="jenis-hewan.edit" />
     </div>
 @endsection

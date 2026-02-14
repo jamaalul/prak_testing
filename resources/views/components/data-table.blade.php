@@ -34,9 +34,15 @@
                             @endforeach
                             <td class="px-6 py-4 text-right whitespace-nowrap">
                                 <div class="flex justify-end space-x-2">
-                                    <button class="p-1 text-cyan-600 hover:text-cyan-900">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
+                                    @if($editRoute && isset($row[$idField]))
+                                        <a href="{{ route($editRoute, $row[$idField]) }}" class="p-1 text-cyan-600 hover:text-cyan-900">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    @else
+                                        <button class="p-1 text-gray-400 cursor-not-allowed" title="Edit route tidak disetel">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    @endif
                                     <button class="p-1 text-red-600 hover:text-red-900" 
                                             @if($model && isset($row[$idField])) 
                                                 onclick="openDeleteModal('{{ $model }}', '{{ $row[$idField] }}')"

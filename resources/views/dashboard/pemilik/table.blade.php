@@ -17,6 +17,7 @@
             })
             ->toArray()"
             model="Pemilik" 
-            id-field="idpemilik" />
+            id-field="id_pemilik"
+            edit-route="pemilik.edit" />
     </div>
 @endsection

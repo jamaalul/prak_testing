@@ -6,6 +6,7 @@
     <div>
         <x-data-table :table-data="App\Models\Kategori::all()->toArray()"
         model="Kategori" 
-        id-field="idkategori"/>
+        id-field="idkategori"
+        edit-route="kategori.edit" />
     </div>
 @endsection

@@ -26,9 +26,9 @@ class RekamMedis extends Model
         'idreservasi_dokter',
     ];
 
-    public function dokter()
+    public function roleUser()
     {
-        return $this->belongsTo(User::class, 'dokter_pemeriksa', 'iduser');
+        return $this->belongsTo(RoleUser::class, 'dokter_pemeriksa', 'idrole_user');
     }
 
     public function pet()

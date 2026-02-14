@@ -6,7 +6,7 @@
     <div>
 
         <x-data-table :table-data="App\Models\RekamMedis::with([
-            // 'dokter:iduser,nama',
+            'roleUser.user:iduser,nama',
             'pet:idpet,nama',
             'reservasi:idreservasi_dokter,no_urut',
         ])
@@ -19,12 +19,10 @@
                     'temuan_klinis' => $item->temuan_klinis,
                     'diagnosa' => $item->diagnosa,
                     'pet' => $item->pet->nama,
-                    // 'dokter' => $item->dokter->nama,
+                    'dokter_pemeriksa' => $item->roleUser->user->nama,
                     'no_urut_reservasi' => $item->reservasi->no_urut,
                 ];
             })
-            ->toArray()"
-            model="RekamMedis" 
-            id-field="idrekam_medis" />
+            ->toArray()" model="RekamMedis" id-field="idrekam_medis" edit-route="rekam-medis.edit" />
     </div>
 @endsection

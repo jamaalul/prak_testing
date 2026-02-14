@@ -7,6 +7,7 @@
 
         <x-data-table :table-data="App\Models\Role::all()->toArray()"
         model="Role" 
-        id-field="idrole" />
+        id-field="idrole"
+        edit-route="role.edit" />
     </div>
 @endsection

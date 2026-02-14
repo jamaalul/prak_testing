@@ -16,6 +16,7 @@
             })
             ->toArray()"
             model="RasHewan" 
-            id-field="idras_hewan" />
+            id-field="idras_hewan"
+            edit-route="ras-hewan.edit" />
     </div>
 @endsection

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class JenisHewan extends Model
 {
+    public $timestamps = false;
+
     protected $table = 'jenis_hewan';
 
     protected $primaryKey = 'idjenis_hewan';
