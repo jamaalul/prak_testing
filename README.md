@@ -102,14 +102,28 @@ Komponen ini digunakan di setiap menu untuk menampilkan data dalam format tabel 
 #### Confirmation Modal Component
 
 ```blade
-<x-confirm-modal 
-    title="Hapus Data"
-    message="Apakah Anda yakin ingin menghapus data ini?"
-    :action="route('data.destroy', $id)"
-/>
+<x-confirm-modal />
 ```
 
-Digunakan untuk konfirmasi penghapusan data dengan UX yang lebih baik.
+Komponen modal konfirmasi penghapusan yang dipanggil via JavaScript:
+
+```javascript
+openDeleteModal('model-name', id);
+```
+
+Contoh penggunaan pada tombol hapus:
+
+```blade
+<button onclick="openDeleteModal('user', {{ $user->id }})">
+    Hapus
+</button>
+```
+
+Fitur yang tersedia:
+- Konfirmasi sebelum penghapusan
+- Loading state saat proses hapus
+- Pesan sukses/gagal setelah penghapusan
+- Auto refresh tabel setelah berhasil
 
 ---
 
