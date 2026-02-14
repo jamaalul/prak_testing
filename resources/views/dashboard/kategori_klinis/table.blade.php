@@ -4,9 +4,7 @@
 
 @section('content')
     <div>
-        <x-data-table :table-data="App\Models\KategoriKlinis::all()->toArray()"
-        model="KategoriKlinis" 
-        id-field="idkategori_klinis"
-        edit-route="klinis.edit" />
+        <x-data-table :table-data="App\Models\KategoriKlinis::all()->toArray()" model="KategoriKlinis" id-field="idkategori_klinis" edit-route="klinis.edit"
+            create-route="klinis.create" />
     </div>
 @endsection

@@ -25,6 +25,7 @@
                     'dokter' => $item->roleUser->user->nama,
                 ];
             })
-            ->toArray()" model="TemuDokter" id-field="id" edit-route="temu-dokter.edit" />
+            ->toArray()" model="TemuDokter" id-field="id" edit-route="temu-dokter.edit"
+            create-route="temu-dokter.create" />
     </div>
 @endsection

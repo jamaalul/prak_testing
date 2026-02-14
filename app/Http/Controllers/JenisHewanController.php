@@ -12,6 +12,22 @@ class JenisHewanController extends Controller
         return view('dashboard.jenis_hewan.table');
     }
 
+    public function create()
+    {
+        return view('dashboard.jenis_hewan.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nama_jenis_hewan' => 'required|string|max:255',
+        ]);
+
+        JenisHewan::create($request->all());
+
+        return redirect()->route('jenis-hewan.index')->with('success', 'Data jenis hewan berhasil ditambahkan.');
+    }
+
     public function edit($id)
     {
         $jenisHewan = JenisHewan::findOrFail($id);

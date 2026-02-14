@@ -15,9 +15,7 @@
                     'no_wa' => $item->no_wa,
                 ];
             })
-            ->toArray()"
-            model="Pemilik" 
-            id-field="id_pemilik"
-            edit-route="pemilik.edit" />
+            ->toArray()" model="Pemilik" id-field="id_pemilik" edit-route="pemilik.edit"
+            create-route="pemilik.create" />
     </div>
 @endsection

@@ -19,9 +19,7 @@
                     'nama_kategori_klinis' => $item->kategoriKlinis->nama_kategori_klinis ?? '-',
                 ];
             })
-            ->toArray()"
-            model="KodeTindakanTerapi" 
-            id-field="idkode_tindakan_terapi"
-            edit-route="tindakan-terapi.edit" />
+            ->toArray()" model="KodeTindakanTerapi" id-field="idkode_tindakan_terapi"
+            edit-route="tindakan-terapi.edit" create-route="tindakan-terapi.create" />
     </div>
 @endsection

@@ -17,9 +17,7 @@
                     'pendidikan' => $item->pendidikan,
                 ];
             })
-            ->toArray()"
-            model="Perawat" 
-            id-field="id_perawat"
-            edit-route="perawat.edit" />
+            ->toArray()" model="Perawat" id-field="id_perawat" edit-route="perawat.edit"
+            create-route="perawat.create" />
     </div>
 @endsection

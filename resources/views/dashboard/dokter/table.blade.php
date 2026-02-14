@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Perawat - RSHP UNAIR')
+@section('title', 'Dokter - RSHP UNAIR')
 
 @section('content')
     <div>
@@ -17,6 +17,7 @@
                     'jenis_kelamin' => $item->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan',
                 ];
             })
-            ->toArray()" model="Dokter" id-field="id_dokter" edit-route="dokter.edit"/>
+            ->toArray()" model="Dokter" id-field="id_dokter" edit-route="dokter.edit"
+            create-route="dokter.create" />
     </div>
 @endsection

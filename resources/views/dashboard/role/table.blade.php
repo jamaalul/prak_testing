@@ -5,9 +5,6 @@
 @section('content')
     <div>
 
-        <x-data-table :table-data="App\Models\Role::all()->toArray()"
-        model="Role" 
-        id-field="idrole"
-        edit-route="role.edit" />
+        <x-data-table :table-data="App\Models\Role::all()->toArray()" model="Role" id-field="idrole" edit-route="role.edit" create-route="role.create" />
     </div>
 @endsection

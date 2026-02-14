@@ -14,6 +14,33 @@ class UserController extends Controller
         return view('dashboard.user.table');
     }
 
+    public function create()
+    {
+        $roles = Role::all();
+        return view('dashboard.user.create', compact('roles'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'email' => 'required|email|unique:user,email',
+            'password' => 'required|string|min:8',
+            'roles' => 'required|array',
+            'roles.*' => 'exists:role,idrole',
+        ]);
+
+        $user = User::create([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        $user->role()->attach($request->roles);
+
+        return redirect()->route('user.index')->with('success', 'User berhasil ditambahkan.');
+    }
+
     public function edit($id)
     {
         $user = User::with('role')->findOrFail($id);

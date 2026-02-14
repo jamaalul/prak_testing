@@ -23,6 +23,7 @@
                     'no_urut_reservasi' => $item->reservasi->no_urut,
                 ];
             })
-            ->toArray()" model="RekamMedis" id-field="idrekam_medis" edit-route="rekam-medis.edit" />
+            ->toArray()" model="RekamMedis" id-field="idrekam_medis" edit-route="rekam-medis.edit"
+            create-route="rekam-medis.create" />
     </div>
 @endsection

@@ -13,6 +13,24 @@ class RasHewanController extends Controller
         return view('dashboard.ras_hewan.table');
     }
 
+    public function create()
+    {
+        $jenisHewans = JenisHewan::all();
+        return view('dashboard.ras_hewan.create', compact('jenisHewans'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nama_ras' => 'required|string|max:255',
+            'idjenis_hewan' => 'required|exists:jenis_hewan,idjenis_hewan',
+        ]);
+
+        RasHewan::create($request->all());
+
+        return redirect()->route('ras-hewan.index')->with('success', 'Data ras hewan berhasil ditambahkan.');
+    }
+
     public function edit($id)
     {
         $rasHewan = RasHewan::with('jenisHewan')->findOrFail($id);

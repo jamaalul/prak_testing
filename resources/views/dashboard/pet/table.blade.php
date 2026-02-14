@@ -18,9 +18,6 @@
                     'wa_pemilik' => $item->pemilik->no_wa,
                 ];
             })
-            ->toArray()"
-            model="Pet" 
-            id-field="id_pet"
-            edit-route="pet.edit" />
+            ->toArray()" model="Pet" id-field="id_pet" edit-route="pet.edit" create-route="pet.create" />
     </div>
 @endsection

@@ -14,9 +14,7 @@
                     'nama_jenis_hewan' => $item->jenisHewan->nama_jenis_hewan ?? '-',
                 ];
             })
-            ->toArray()"
-            model="RasHewan" 
-            id-field="idras_hewan"
-            edit-route="ras-hewan.edit" />
+            ->toArray()" model="RasHewan" id-field="idras_hewan" edit-route="ras-hewan.edit"
+            create-route="ras-hewan.create" />
     </div>
 @endsection

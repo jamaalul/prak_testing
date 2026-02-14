@@ -12,6 +12,22 @@ class KategoriController extends Controller
         return view('dashboard.kategori.table');
     }
 
+    public function create()
+    {
+        return view('dashboard.kategori.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nama_kategori' => 'required|string|max:255',
+        ]);
+
+        Kategori::create($request->all());
+
+        return redirect()->route('kategori.index')->with('success', 'Data kategori berhasil ditambahkan.');
+    }
+
     public function edit($id)
     {
         $kategori = Kategori::findOrFail($id);

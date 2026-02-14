@@ -14,6 +14,27 @@ class TindakanTerapiController extends Controller
         return view('dashboard.tindakan_terapi.table');
     }
 
+    public function create()
+    {
+        $kategoris = Kategori::all();
+        $kategoriKliniss = KategoriKlinis::all();
+        return view('dashboard.tindakan_terapi.create', compact('kategoris', 'kategoriKliniss'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'kode' => 'required|string|max:50',
+            'deskripsi_tindakan_terapi' => 'required|string',
+            'idkategori' => 'required|exists:kategori,idkategori',
+            'idkategori_klinis' => 'required|exists:kategori_klinis,idkategori_klinis',
+        ]);
+
+        KodeTindakanTerapi::create($request->all());
+
+        return redirect()->route('tindakan-terapi.index')->with('success', 'Data tindakan terapi berhasil ditambahkan.');
+    }
+
     public function edit($id)
     {
         $tindakan = KodeTindakanTerapi::with(['kategori', 'kategoriKlinis'])->findOrFail($id);

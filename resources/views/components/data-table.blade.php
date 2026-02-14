@@ -1,6 +1,16 @@
 @props(['tableData' => []])
 
 <div class="bg-white shadow-sm border border-gray-200 rounded-xl overflow-hidden">
+    <div class="flex justify-between items-center p-4 border-gray-200 border-b">
+        <h2 class="font-semibold text-gray-800 text-lg">{{ $model }}</h2>
+        @if ($createRoute)
+            <a href="{{ route($createRoute) }}"
+                class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg font-medium text-white text-sm transition-colors">
+                <i class="mr-2 fas fa-plus"></i>
+                Tambah Baru
+            </a>
+        @endif
+    </div>
     @if (empty($tableData) || count($tableData) === 0)
         <div class="p-12 text-center">
             <div class="inline-flex justify-center items-center bg-gray-50 mb-4 rounded-full w-16 h-16">
@@ -34,21 +44,21 @@
                             @endforeach
                             <td class="px-6 py-4 text-right whitespace-nowrap">
                                 <div class="flex justify-end space-x-2">
-                                    @if($editRoute && isset($row[$idField]))
-                                        <a href="{{ route($editRoute, $row[$idField]) }}" class="p-1 text-cyan-600 hover:text-cyan-900">
+                                    @if ($editRoute && isset($row[$idField]))
+                                        <a href="{{ route($editRoute, $row[$idField]) }}"
+                                            class="p-1 text-cyan-600 hover:text-cyan-900">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                     @else
-                                        <button class="p-1 text-gray-400 cursor-not-allowed" title="Edit route tidak disetel">
+                                        <button class="p-1 text-gray-400 cursor-not-allowed"
+                                            title="Edit route tidak disetel">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                     @endif
-                                    <button class="p-1 text-red-600 hover:text-red-900" 
-                                            @if($model && isset($row[$idField])) 
-                                                onclick="openDeleteModal('{{ $model }}', '{{ $row[$idField] }}')"
+                                    <button class="p-1 text-red-600 hover:text-red-900"
+                                        @if ($model && isset($row[$idField])) onclick="openDeleteModal('{{ $model }}', '{{ $row[$idField] }}')"
                                             @else
-                                                onclick="alert('ID atau Model tidak disetel untuk penghapusan')"
-                                            @endif>
+                                                onclick="alert('ID atau Model tidak disetel untuk penghapusan')" @endif>
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>

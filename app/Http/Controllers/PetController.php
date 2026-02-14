@@ -15,6 +15,29 @@ class PetController extends Controller
         return view('dashboard.pet.table');
     }
 
+    public function create()
+    {
+        $pemiliks = Pemilik::with('user')->get();
+        $rasHewans = RasHewan::with('jenisHewan')->get();
+        return view('dashboard.pet.create', compact('pemiliks', 'rasHewans'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'tanggal_lahir' => 'required|date',
+            'warna_tanda' => 'required|string|max:255',
+            'jenis_kelamin' => 'required|in:Jantan,Betina',
+            'idpemilik' => 'required|exists:pemilik,idpemilik',
+            'idras_hewan' => 'required|exists:ras_hewan,idras_hewan',
+        ]);
+
+        Pet::create($request->all());
+
+        return redirect()->route('pet.index')->with('success', 'Data hewan berhasil ditambahkan.');
+    }
+
     public function edit($id)
     {
         $pet = Pet::with(['pemilik.user', 'rasHewan.jenisHewan'])->findOrFail($id);
